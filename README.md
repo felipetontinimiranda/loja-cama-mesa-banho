@@ -1,80 +1,66 @@
-body {
-  font-family: Arial, sans-serif;
-  background-color: #fdfdfd;
-  margin: 0;
-  padding: 0;
-}
+<body>
+  <header>
+    <h1>Loja Cama, Mesa e Banho</h1>
+    <nav>
+      <a href="#">Início</a>
+      <a href="#produtos">Produtos</a>
+      <a href="#carrinho">Carrinho</a>
+    </nav>
+  </header>
 
-header {
-  background-color: #2e8b57;
-  color: white;
-  padding: 20px;
-  text-align: center;
-}
+  <main>
+    <section id="produtos">
+      <div class="produto">
+        <img src="https://via.placeholder.com/200" alt="Toalha de Banho Luxo">
+        <h2>Toalha de Banho Luxo</h2>
+        <p>Toalha 100% algodão, super macia e absorvente.</p>
+        <p class="preco">R$ 39,90</p>
+        <button onclick="adicionarAoCarrinho('Toalha de Banho Luxo', 39.90)">Comprar</button>
+      </div>
 
-nav a {
-  color: white;
-  margin: 0 10px;
-  text-decoration: none;
-  font-weight: bold;
-}
+      <div class="produto">
+        <img src="https://via.placeholder.com/200" alt="Jogo de Cama Queen">
+        <h2>Jogo de Cama Queen</h2>
+        <p>Conjunto 4 peças 200 fios. Toque macio e elegante.</p>
+        <p class="preco">R$ 149,90</p>
+        <button onclick="adicionarAoCarrinho('Jogo de Cama Queen', 149.90)">Comprar</button>
+      </div>
 
-main {
-  padding: 20px;
-}
+      <div class="produto">
+        <img src="https://via.placeholder.com/200" alt="Jogo de Toalhas">
+        <h2>Kit Toalhas</h2>
+        <p>Conjunto 5 peças com cores sortidas.</p>
+        <p class="preco">R$ 79,90</p>
+        <button onclick="adicionarAoCarrinho('Kit Toalhas', 79.90)">Comprar</button>
+      </div>
+    </section>
 
-#produtos {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
-  justify-content: center;
-}
+    <section id="carrinho">
+      <h2>Carrinho de Compras</h2>
+      <ul id="lista-carrinho"></ul>
+      <p>Total: R$ <span id="total">0.00</span></p>
+      <a href="checkout.html"><button>Finalizar Compra</button></a>
+    </section>
+  </main>
 
-.produto {
-  border: 1px solid #ccc;
-  padding: 10px;
-  width: 200px;
-  border-radius: 10px;
-  background: #fff;
-  text-align: center;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-}
+  <script>
+    let carrinho = [];
+    function adicionarAoCarrinho(produto, preco) {
+      carrinho.push({ produto, preco });
+      atualizarCarrinho();
+    }
 
-.produto img {
-  width: 100%;
-  border-radius: 8px;
-}
-
-.produto h2 {
-  font-size: 18px;
-  margin: 10px 0 5px;
-}
-
-.produto p {
-  font-size: 14px;
-  margin: 5px 0;
-}
-
-.produto .preco {
-  font-weight: bold;
-  color: #2e8b57;
-  margin: 8px 0;
-}
-
-button {
-  background-color: #2e8b57;
-  color: white;
-  border: none;
-  padding: 10px;
-  margin-top: 10px;
-  border-radius: 5px;
-  cursor: pointer;
-}
-
-button:hover {
-  background-color: #276f48;
-}
-
-#carrinho {
-  margin-top: 40px;
-}
+    function atualizarCarrinho() {
+      const lista = document.getElementById('lista-carrinho');
+      lista.innerHTML = '';
+      let total = 0;
+      carrinho.forEach(item => {
+        const li = document.createElement('li');
+        li.textContent = `${item.produto} - R$ ${item.preco.toFixed(2)}`;
+        lista.appendChild(li);
+        total += item.preco;
+      });
+      document.getElementById('total').textContent = total.toFixed(2);
+    }
+  </script>
+</body>
