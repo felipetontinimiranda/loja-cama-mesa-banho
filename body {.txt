@@ -19,8 +19,46 @@ nav a {
   font-weight: bold;
 }
 
-section {
+main {
   padding: 20px;
+}
+
+#produtos {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+}
+
+.produto {
+  border: 1px solid #ccc;
+  padding: 10px;
+  width: 200px;
+  border-radius: 10px;
+  background: #fff;
+  text-align: center;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+.produto img {
+  width: 100%;
+  border-radius: 8px;
+}
+
+.produto h2 {
+  font-size: 18px;
+  margin: 10px 0 5px;
+}
+
+.produto p {
+  font-size: 14px;
+  margin: 5px 0;
+}
+
+.produto .preco {
+  font-weight: bold;
+  color: #2e8b57;
+  margin: 8px 0;
 }
 
 button {
@@ -37,9 +75,6 @@ button:hover {
   background-color: #276f48;
 }
 
-input, textarea {
-  display: block;
-  width: 100%;
-  margin-bottom: 10px;
-  padding: 8px;
+#carrinho {
+  margin-top: 40px;
 }
